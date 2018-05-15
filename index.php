@@ -36,7 +36,7 @@ $dia_fecha = "15";
 $mes_fecha = "Mayo";
 $ano_fecha = "2018";
 $tipo_pago_tarjeta = "tarjeta";
-
+$txtNomina = "UABJO";
 
 
 
@@ -99,7 +99,6 @@ switch ($metodo_de_cobranza) {
 		$templade = str_replace("{TD}", "", $templade);
 		$templade = str_replace("{OXXO}", "", $templade);
 		$templade = str_replace("{Nomina}", "", $templade);
-		$templade = str_replace("{txtNomina}", "", $templade);
 
 		switch ($tipo_pago_tarjeta) {
 			case 'trasferencia':
@@ -119,19 +118,16 @@ switch ($metodo_de_cobranza) {
 		$templade = str_replace("{TD}", "X", $templade);
 		$templade = str_replace("{OXXO}", "", $templade);
 		$templade = str_replace("{Nomina}", "", $templade);
-		$templade = str_replace("{txtNomina}", "", $templade);
+	
 		switch ($tipo_pago_tarjeta) {
 			case 'trasferencia':
-				$templade = str_replace("{claveinterbancaria}",$numero_pagos, $templade);
-				$templade = str_replace("{numero_tarjeta}","", $templade);
-				$templade = str_replace("{fecha_expiracion}","", $templade);
-				$templade = str_replace("{banco}","", $templade);
+				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>CLABE INTERBANCARIA ".$claveinterbancaria."<o:p></o:p></span></p>";
+				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
 				break;
 			case 'tarjeta':
-				$templade = str_replace("{claveinterbancaria}","", $templade);
-				$templade = str_replace("{numero_tarjeta}",$numero_tarjeta, $templade);
-				$templade = str_replace("{fecha_expiracion}",$fecha_expiracion, $templade);
-				$templade = str_replace("{banco}",$numero_tarjeta, $templade);
+				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>".utf8_decode("Número de tarjeta:  ".$numero_tarjeta)."<span style='mso-spacerun:yes'></span><span style='mso-spacerun:yes'></span>".utf8_decode("&nbsp;&nbsp;&nbsp;&nbsp;Fecha de expiración:  ".$fecha_expiracion)."<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;Banco:  ".utf8_decode($banco)."<span style='mso-spacerun:yes'></span><o:p></o:p></span></p>";
+				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
+				
 				break;
 		}
 		
@@ -142,22 +138,15 @@ switch ($metodo_de_cobranza) {
 		$templade = str_replace("{TD}", "", $templade);
 		$templade = str_replace("{OXXO}", "X", $templade);
 		$templade = str_replace("{Nomina}", "", $templade);
-		$templade = str_replace("{txtNomina}", "", $templade);
-		$templade = str_replace("{claveinterbancaria}",$numero_pagos, $templade);
-		$templade = str_replace("{numero_tarjeta}","", $templade);
-		$templade = str_replace("{fecha_expiracion}","", $templade);
-		$templade = str_replace("{banco}","", $templade);
+		$templade = str_replace("{campo_dinamico}","", $templade);
 		break;
 	case 'Nomina':
 		$templade = str_replace("{TC}", "", $templade);
 		$templade = str_replace("{TD}", "", $templade);
 		$templade = str_replace("{OXXO}", "", $templade);
 		$templade = str_replace("{Nomina}", "X", $templade);
-		$templade = str_replace("{txtNomina}", $nomina, $templade);
-		$templade = str_replace("{claveinterbancaria}",$numero_pagos, $templade);
-		$templade = str_replace("{numero_tarjeta}","", $templade);
-		$templade = str_replace("{fecha_expiracion}","", $templade);
-		$templade = str_replace("{banco}","", $templade);
+		$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>NOMINA :  ".$txtNomina."<o:p></o:p></span></p>";
+		$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
 		break;
 
 }
