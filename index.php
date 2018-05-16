@@ -25,7 +25,7 @@ $municipioTrabajo = "Oaxaca de Juarez";
 $cpTrabajo = "68024";
 $celular = "951 123 4566";
 $email = "email_email@gmail.com";
-$metodo_de_cobranza = "TC";
+$metodo_de_cobranza = "TD";
 $numero_tarjeta = "1111 1111 1111 1111";
 $fecha_expiracion = "00/00";
 $banco  = "BANORTE";
@@ -37,8 +37,9 @@ $mes_fecha = "Mayo";
 $ano_fecha = "2018";
 $tipo_pago_tarjeta = "tarjeta";
 $txtNomina = "UABJO";
-
-
+$claveinterbancaria = "123456789123456789";
+$left_firma_cliente = "480px";
+$top_firma_cliente = "450px";
 
 /*detalles del plan*/
 $nombre_plan = "PLAN TEPEYAC";
@@ -104,11 +105,18 @@ switch ($metodo_de_cobranza) {
 			case 'trasferencia':
 				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>CLABE INTERBANCARIA ".$claveinterbancaria."<o:p></o:p></span></p>";
 				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
+				$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:450px'>";
+				$templade = str_replace("{firma_cliente}",$firma, $templade);
+				$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:905px'>";
+				$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 				break;
 			case 'tarjeta':
 				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>".utf8_decode("Número de tarjeta:  ".$numero_tarjeta)."<span style='mso-spacerun:yes'></span><span style='mso-spacerun:yes'></span>".utf8_decode("&nbsp;&nbsp;&nbsp;&nbsp;Fecha de expiración:  ".$fecha_expiracion)."<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;Banco:  ".utf8_decode($banco)."<span style='mso-spacerun:yes'></span><o:p></o:p></span></p>";
 				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
-				
+				$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:450px'>";
+				$templade = str_replace("{firma_cliente}",$firma, $templade);
+				$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:905px'>";
+				$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 				break;
 		}
 		
@@ -123,11 +131,18 @@ switch ($metodo_de_cobranza) {
 			case 'trasferencia':
 				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>CLABE INTERBANCARIA ".$claveinterbancaria."<o:p></o:p></span></p>";
 				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
+				$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:450px'>";
+				$templade = str_replace("{firma_cliente}",$firma, $templade);
+				$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:905px'>";
+				$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 				break;
 			case 'tarjeta':
 				$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>".utf8_decode("Número de tarjeta:  ".$numero_tarjeta)."<span style='mso-spacerun:yes'></span><span style='mso-spacerun:yes'></span>".utf8_decode("&nbsp;&nbsp;&nbsp;&nbsp;Fecha de expiración:  ".$fecha_expiracion)."<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;Banco:  ".utf8_decode($banco)."<span style='mso-spacerun:yes'></span><o:p></o:p></span></p>";
 				$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
-				
+				$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:450px'>";
+				$templade = str_replace("{firma_cliente}",$firma, $templade);
+				$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:905px'>";
+				$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 				break;
 		}
 		
@@ -139,6 +154,10 @@ switch ($metodo_de_cobranza) {
 		$templade = str_replace("{OXXO}", "X", $templade);
 		$templade = str_replace("{Nomina}", "", $templade);
 		$templade = str_replace("{campo_dinamico}","", $templade);
+		$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:430px'>";
+		$templade = str_replace("{firma_cliente}",$firma, $templade);
+		$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:885px'>";
+		$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 		break;
 	case 'Nomina':
 		$templade = str_replace("{TC}", "", $templade);
@@ -147,6 +166,10 @@ switch ($metodo_de_cobranza) {
 		$templade = str_replace("{Nomina}", "X", $templade);
 		$campo_dinamico = "<p class=MsoNormal style='margin-bottom:3.0pt;line-height:normal;tab-stops:108.75pt'><span style='font-size:10.0pt'>NOMINA :  ".$txtNomina."<o:p></o:p></span></p>";
 		$templade = str_replace("{campo_dinamico}",$campo_dinamico, $templade);
+		$firma = "<img src='images/firma.fw.png' style='position:absolute;left:480px;top:450px'>";
+		$templade = str_replace("{firma_cliente}",$firma, $templade);
+		$firma_agente = "<img src='images/firma.fw.png' style='position:absolute;left:320px;top:905px'>";
+		$templade = str_replace("{firma_agente}",$firma_agente, $templade);
 		break;
 
 }
